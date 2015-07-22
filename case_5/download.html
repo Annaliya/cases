@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="Sunday 26 October 2012 01:00 GMT" />
+<title>友宝</title>
+<style>
+a{text-decoration:none;}
+.guide{margin-left:7.8125%; width:82.8125%;}
+.guide img{width:100%; display:block; margin-top:2em;}
+
+.download{width:75%; margin:0 auto;}
+.download img{display:block; width:100%;}
+.download a{background-color:#448ccb; display:block; text-align:center;line-height:2em; width:100%;border-radius:.2em;border:none 0; color:#fff; font-size:1.2em; height:2em;font-family:微软雅黑,Microsoft Yahei,Arial;margin:2em 0;}
+</style>
+</head>
+<body style="background-color: #fff;">
+  <!-- iphone 微信显示 start -->
+  <div class="guide" id="box_guide" style="display:none;">
+  	<img src="http://img.ubox.cn/web/img/weixin/download/dl_guide.gif" />
+  	<div class="" id="box_infor"></div>
+  </div>
+  <!-- iphone 微信显示 end -->
+
+  <!-- Android 微信显示 -->
+  <div class="download" id="box_download">
+  	<img src="http://img.ubox.cn/web/img/weixin/download/dl_text.gif" style="margin:1em 0;" />
+  	<img src="http://img.ubox.cn/web/img/weixin/download/dl_img.gif" />
+  	<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ub.main">下载友宝客户端</a>
+  </div>
+  <!-- Android 微信显示 -->
+<script>
+(function(){
+  var _agent      = navigator.userAgent,
+    box_guide     = document.getElementById('box_guide'),
+    box_download  = document.getElementById('box_download');
+    var box_infor = document.getElementById('box_infor');
+    if(_agent.match(/android/i)!=null){  // 安卓移动端
+      box_guide.style.display = 'none';
+      box_download.style.display = '';
+    }else{    // 非安卓移动端
+      box_guide.style.display = '';
+      box_download.style.display = 'none';
+      if(_agent.indexOf('MicroMessenger') != -1){   // 非安卓移动端：微信浏览器 给出引导提示
+        box_guide.style.display = '';
+        box_download.style.display = 'none';
+      }else{  // 非安卓移动端：  非微信浏览器--直接打开apple app商店
+        box_guide.style.display = 'none';
+        box_download.style.display = 'none';
+        window.location.href="/wx/lastest-version.php?ver=iphone&channel=HOME-ANDROID";
+      }
+    }
+})();
+</script>
+</body>
+</html>
