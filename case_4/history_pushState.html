@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta http-equiv="pragma" content="no-cache" />
+<title>Test</title>
+<style type="text/css">
+body{font-family:'微软雅黑','Microsoft Yahei','Arail';}
+div{height:200px;border-bottom: #999 1px solid;}
+</style>
+</head>
+<body>
+<div id="">
+<a href="/html/index_0525.html" class="a1">去首页</a>
+</div>
+<div style="height:300px;">
+	<a name="a"></a>AA<br/>
+	<a href="/html/index_0525.html"  class="a1">去首页</a>
+	<a href="#b">到B</a>
+</div>
+<div style="height:300px;">
+	<a name="b"></a>BB
+	<a href="/html/index_0525.html"  class="a1">去首页</a>
+</div>
+<div style="height:300px;">
+	<a name="c"></a>CC
+	<a href="/html/index_0525.html"  class="a1">去首页</a>
+</div>
+<div style="height:300px;">
+	<a name="d"></a>DD
+	<a href="/html/index_0525.html"  class="a1">去首页</a>
+</div>
+<div style="height:300px;">
+	<a name="e"></a>EE
+	<a href="/html/index_0525.html"  class="a1">去首页</a>
+</div>
+<div style="height:300px;">
+	<a name="f"></a>FF
+	<a href="/html/index_0525.html"  class="a1">去首页</a>
+</div>
+<div style="height:300px;">
+	<a name="g"></a>GG
+	<a href="/html/index_0525.html"  class="a1">去首页</a>
+</div>
+<div id="animate" style="position:absolute;top:0;left:0;background-color:#999;"></div>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script>
+$(function(){
+	var state = {
+		title: 'history Api test',
+		url: '/test.html?top=10#a'
+	}
+});
+$('body').on('click', '.a1', function(){
+	var scrollTop = $('body').scrollTop();
+	console.log(location.pathname)
+	history.replaceState(null, '', location.pathname+'#'+scrollTop); //修改
+	//history.pushState(null, '', location.pathname+'#'+scrollTop); //新增
+	//return false;
+})
+$(function(){
+	$(window).on('popstate', function(event){
+		var hash = window.location.hash;
+		var top = hash.substring(1, hash.length);
+		$('body').scrollTop(top);
+		console.log($('body').scrollTop())
+	});
+});
+
+$('#animate').animate({
+	top:'100px'
+});
+</script>
+</body>
+</html>
